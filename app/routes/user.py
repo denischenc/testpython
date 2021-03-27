@@ -1,5 +1,5 @@
 
-from flask import current_app as app, Blueprint, request, jsonify
+from flask import current_app as app, render_template, Blueprint, request, jsonify
 from app.database import db
 from app.models.user import User
 from app.repositories import UserRepository
@@ -13,6 +13,10 @@ def index():
     all_users = UserRepository().get_all_users()
     print(all_users)
     return jsonify(success=True, message=all_users)
+
+@USER_BLUEPRINT.route('/test')
+def test():
+    return render_template('200.html'), 200
 
 
 @USER_BLUEPRINT.route('/adduser', methods=["POST"])

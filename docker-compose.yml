@@ -1,0 +1,15 @@
+version: '3'
+
+volumes:
+  db:
+
+services:
+  # This launchees the database
+  db:
+    build:
+      context: ./docker/psql
+    env_file: ./docker/psql/psql.env
+    volumes:
+      - ./data:/data
+    ports:
+      - 5437:5432

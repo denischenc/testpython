@@ -11,8 +11,8 @@ import os
 def create_app():
     # the flask object
     server = Flask(__name__)
-    register_extension(server)
     load_config(server)
+    register_extension(server)
     register_blueprints(server)
     print("From server %s" % (server.config['ENVBITCH']))
 
@@ -40,7 +40,7 @@ def load_config(server):
       `export FLASK_ENV=development`
     """
 
-    flask_env = os.getenv('FLASK_ENV', None)
+    flask_env = "development"
     print("Loading ''%s'' configuration..." % (flask_env), flush=True)
 
     if flask_env == "development":
